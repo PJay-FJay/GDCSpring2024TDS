@@ -8,6 +8,10 @@ public class enemyHealth : MonoBehaviour
     public int maxHP = 3;
     public int currHP;
 
+    private BoxCollider2D myBC;
+
+    //public GameObject enemy;
+
     void TakeDamage(int dmg){
         currHP -= dmg;
     }
@@ -17,12 +21,19 @@ public class enemyHealth : MonoBehaviour
         //Destroys the gameObject upon colliding with a box collider of some sort
         if(collision.gameObject.name == "Bullet(Clone)"){
             TakeDamage(2);
+            
+            //We are onto something!
+            myBC.enabled = false;
+            //gameObject.SetActive(false);
+            //gameObject.SetActive(true);
+            //myBC.enabled = true;
         }
     }
 
     void Start()
     {
         currHP = maxHP;
+        myBC = gameObject.GetComponent<BoxCollider2D>();
     }
 
     void Update()
