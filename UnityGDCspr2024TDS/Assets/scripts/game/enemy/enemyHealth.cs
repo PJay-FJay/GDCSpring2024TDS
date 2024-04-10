@@ -9,6 +9,7 @@ public class enemyHealth : MonoBehaviour
     public int currHP;
 
     private BoxCollider2D myBC;
+    private SpriteRenderer mySR;
 
     //public GameObject enemy;
 
@@ -16,17 +17,33 @@ public class enemyHealth : MonoBehaviour
         currHP -= dmg;
     }
 
+    public void DelayDamage(){
+        myBC.enabled=false;
+            gameObject.SetActive(false);
+            gameObject.SetActive(true);
+        
+        Invoke("EnableDamage", 0.1f);
+       
+
+    }
+
+    /*public void IFrame(){
+        while(myBC == false){
+            mySR.enabled = false;
+            mySR.enabled = true;
+        }
+    }*/
+
+    public void EnableDamage(){
+        myBC.enabled=true;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision){
 
         //Destroys the gameObject upon colliding with a box collider of some sort
         if(collision.gameObject.name == "Bullet(Clone)"){
             TakeDamage(2);
-            
-            //We are onto something!
-            myBC.enabled = false;
-            //gameObject.SetActive(false);
-            //gameObject.SetActive(true);
-            //myBC.enabled = true;
+            DelayDamage();
         }
     }
 
