@@ -11,6 +11,8 @@ public class AIchase : MonoBehaviour
 
     void Update()
     {
+        player = GameObject.Find("Player");
+
         //Gets distance from player to the enemy
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
