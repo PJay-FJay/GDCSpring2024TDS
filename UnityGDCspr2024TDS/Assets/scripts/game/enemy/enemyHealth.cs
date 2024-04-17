@@ -11,6 +11,8 @@ public class enemyHealth : MonoBehaviour
     private BoxCollider2D myBC;
     private SpriteRenderer mySR;
 
+    public GameObject Score;
+
     //public GameObject enemy;
 
     void TakeDamage(int dmg){
@@ -51,12 +53,15 @@ public class enemyHealth : MonoBehaviour
     {
         currHP = maxHP;
         myBC = gameObject.GetComponent<BoxCollider2D>();
+        Score = GameObject.Find("PScore");
     }
 
     void Update()
     {
 
         if(currHP <= 0){
+            //Can put point in here
+            Score.GetComponent<score>().pts += 100;
             Destroy(gameObject);
         }
     }
