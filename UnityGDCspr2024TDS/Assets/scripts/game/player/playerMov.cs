@@ -42,6 +42,30 @@ public class playerMov : MonoBehaviour
 
         }
 
+        //Game Boundaries || Ceilings
+        if(transform.position.y > 5){               //Ceiling
+            Vector3 temp = transform.position;
+            temp.y = 5;
+            transform.position = temp;
+        }
+
+        if(transform.position.y < -5){              //Floor
+            Vector3 temp = transform.position;
+            temp.y = -5;
+            transform.position = temp;
+        }
+
+        if(transform.position.x > 8.7f){
+            Vector3 temp = transform.position;
+            temp.x = 8.7f;
+            transform.position = temp;
+        }
+
+        if(transform.position.x < -8.7f){
+            Vector3 temp = transform.position;
+            temp.x = -8.7f;
+            transform.position = temp;
+        }
         
 
     }
